@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+sdv
+pandas
+python-multipart
+numpy==1.26.4
