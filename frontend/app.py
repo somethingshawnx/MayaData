@@ -5,7 +5,7 @@ st.title("🔐 MayaData: Synthetic Data Generator")
 st.markdown("Upload your **sensitive CSV**, and we will generate a **mathematically identical fake version**.")
 
 # NOTE: Since we are running locally, we use localhost
-API_URL = "http://127.0.0.1:8000"
+API_URL = "https://mayadata-1.onrender.com"
 
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 num_rows = st.slider("How many fake rows do you want?", 100, 500, 100)
