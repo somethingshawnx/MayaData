@@ -1,10 +1,19 @@
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 import shutil
 import os
 from engine import generate_synthetic_data
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 os.makedirs("temp_uploads", exist_ok=True)
 
@@ -25,3 +34,7 @@ async def generate(file: UploadFile = File(...), rows: int = 100):
     
     except Exception as e:
         return {"error": str(e)}
+
+# Mount the static frontend files at the root
+from fastapi.staticfiles import StaticFiles
+app.mount("/", StaticFiles(directory="../frontend", html=True), name="frontend")

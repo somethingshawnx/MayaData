@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MayaData: Synthetic Data Generator</title>
+    <!-- Modern Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Phosphor Icons for modern iconography -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <main class="glass-panel main-container">
+        <header>
+            <div class="logo-container">
+                <i class="ph-fill ph-shield-check logo-icon"></i>
+                <h1>MayaData</h1>
+            </div>
+            <p class="subtitle">The Safe Fuel for Your AI Engine</p>
+            <p class="description">Generate mathematically identical synthetic data from your sensitive
+                <strong>Healthcare and Financial</strong> datasets. Train AI models flawlessly while guaranteeing 100%
+                GDPR and HIPAA compliance.</p>
+
+            <div class="trust-badges">
+                <span class="badge badge-hipaa"><i class="ph ph-check-circle"></i> HIPAA Ready</span>
+                <span class="badge badge-gdpr"><i class="ph ph-check-circle"></i> GDPR Compliant</span>
+                <span class="badge badge-secure"><i class="ph ph-lock-key"></i> Bank-Grade Security</span>
+            </div>
+        </header>
+
+        <form id="generator-form">
+            <!-- File Upload Area -->
+            <div class="upload-zone" id="upload-zone">
+                <input type="file" id="csv-file" accept=".csv" required hidden>
+                <div class="upload-content">
+                    <i class="ph ph-cloud-arrow-up upload-icon"></i>
+                    <p class="upload-title">Choose a CSV file or drag & drop it here</p>
+                    <p class="upload-subtitle">Formats accepted: .csv up to 50MB</p>
+                    <button type="button" class="btn-secondary" id="browse-btn">Browse Files</button>
+                </div>
+                <!-- Selected File Display -->
+                <div class="selected-file hidden" id="selected-file-display">
+                    <div class="file-info">
+                        <i class="ph ph-file-csv"></i>
+                        <span id="file-name">data.csv</span>
+                    </div>
+                    <button type="button" class="icon-btn" id="remove-file-btn" aria-label="Remove file">
+                        <i class="ph ph-x"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Configuration -->
+            <div class="config-section">
+                <div class="slider-header">
+                    <label for="row-slider">Rows to generate</label>
+                    <span class="badged-value" id="row-count-display">100</span>
+                </div>
+                <input type="range" id="row-slider" min="10" max="1000" value="100" class="styled-slider">
+                <div class="slider-labels">
+                    <span>10</span>
+                    <span>1000</span>
+                </div>
+            </div>
+
+            <!-- Submit Action -->
+            <button type="submit" class="btn-primary" id="submit-btn" disabled>
+                <div class="btn-content">
+                    <i class="ph ph-magic-wand"></i>
+                    <span>Generate Synthetic Data</span>
+                </div>
+                <!-- Loading state -->
+                <div class="loading-state hidden">
+                    <div class="spinner"></div>
+                    <span>Training AI Model...</span>
+                </div>
+            </button>
+        </form>
+
+        <!-- Status Messages -->
+        <div id="status-message" class="status-message hidden">
+            <i class="ph ph-warning-circle status-icon"></i>
+            <span id="status-text">Server error.</span>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
